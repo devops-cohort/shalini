@@ -3,10 +3,12 @@ from application import db, login_manager
 from datetime import datetime
 
 
-class Country(db.Model):
+class Continent(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    country_name = db.Column(db.String(30), nullable=False)
-
+    europe=db.Column(db.String(50), nullable=False)
+    africa=db.Column(db.String(50), nullable=False)
+    asia=db.Column(db.String(50), nullable=False)
+    america=db.Column(db.String(50), nullable=False)
     def __repr__(self):
         return ''.join([
             'Country ID: ', self.id, '','\r\n',
@@ -19,16 +21,18 @@ class Country(db.Model):
 
 class Posts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(30), nullable=False)
-    last_name = db.Column(db.String(30), nullable=False)
     title = db.Column(db.String(100), nullable=False, unique=True)
     content = db.Column(db.String(500), nullable=False, unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False)
+    country_id = db.Column(db.Integer, db.ForeignKey('Continent.id'), nullable=False)
+
 
     def __repr__(self):
         return ''.join([
             'User: ', self.first_name, '', self.last_name,
             '\r\n',
-            'Title: ', self.title, '\r\n', slef.content
+            'Title: ', self.title, '\r\n', self.content
+            'Username', self.user_id.first_name, self.user_id.last_name
         ])
 
 
@@ -38,7 +42,12 @@ class Posts(db.Model):
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), nullable=False, unique=True)
+    first_name = db.Column(db.String(30), nullable=False)
+    last_name = db.Column(db.String(30), nullable=False)
     password = db.Column(db.String(100), nullable=False)
+    post_relationship= db.relationship('Posts', backref='author', lazy=True)
+    
+    
     @login_manager.user_loader
     def load_user(id):
         return Users.query.get(int(id))
