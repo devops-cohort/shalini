@@ -3,8 +3,7 @@ from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Users
 
-class PostForm(FlaskForm):
-    first_name = StringField('First Name', 
+'''    first_name = StringField('First Name', 
         validators=[
             DataRequired(),
             Length(min=4, max =30)
@@ -14,10 +13,13 @@ class PostForm(FlaskForm):
     last_name = StringField('Last Name', 
         validators=[
             DataRequired(),
-            Length(min=4, max=30)
+            Length(min=4, max=30) 
         ]
     )
+'''
 
+
+class PostForm(FlaskForm):
     title = StringField('Title',
         validators=[
             DataRequired(),
@@ -31,7 +33,13 @@ class PostForm(FlaskForm):
             Length(min=4, max=100)
         ]
     )
-    
+
+
+    photo_id = StringField('Photo',
+        validators=[
+            DataRequired()
+        ]
+    )
 
     submit = SubmitField('Post Content')
 

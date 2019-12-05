@@ -3,6 +3,107 @@ from application import db, login_manager
 from datetime import datetime
 
 
+
+class Photo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    photo_link = db.Column(db.String(300), nullable = False)
+    photo_posts = db.relationship('Posts', backref = 'photo', lazy=True)
+
+    def __repr__(self):
+        return ''.join([
+            'Photo ID: ', str(self.id),'\r\n',
+            'Photo Link ', self.photo_link
+        ])
+
+class Posts(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False, unique=True)
+    content = db.Column(db.String(500), nullable=False, unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    photo_id = db.Column(db.Integer, db.ForeignKey('photo.id'), nullable=False) 
+#    photo_theme = db.Column(db.Integer, db.ForeignKey('photo_theme.id'), nullable=False) 
+#    photo_continent = db.Column(db.Integer, db.ForeignKey('photo_continent.id'), nullable=False)
+
+
+    def __repr__(self):
+        return ''.join([
+            'Post ID: ', str(self.id), '\r\n', 
+            'Title: ', self.title, '\r\n',
+            'Content: ', self.content, '\r\n'
+        ])
+
+
+
+class Photo_Theme(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    theme = db.Column(db.String(100), nullable=False)
+#    theme_posts = db.relationship=('Posts')
+
+    def __repr__(self):
+        return ''.join([
+            'Theme ID: ', str(self.id),'\r\n',
+            'Photo Theme ', self.photo_link
+        ])
+
+
+class Photo_Continent(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    Continent = db.Column(db.String(100), nullable=False)
+#    continent_posts = db.relationship=('Posts')
+
+
+    def __repr__(self):
+        return ''.join([
+            'Country ID: ', str(self.id),'\r\n',
+            'Photo Continent ', self.photo_link
+        ])
+
+
+
+class Users(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(150), nullable=False, unique=True)
+    password = db.Column(db.String(100), nullable=False)
+    first_name = db.Column(db.String(30), nullable=False)
+    last_name = db.Column(db.String(30), nullable=False)
+    users_posts = db.relationship('Posts', backref = 'users', lazy=True)
+
+
+    @login_manager.user_loader
+    def load_user(id):
+        return Users.query.get(int(id))
+
+    def __repr__(self):
+        return ''.join(['User ID: ', str(self.id), '\r\n', 'Email: ', self.email])
+
+
+
+
+
+
+'''
+
+    def __repr__(self):
+        return ''.join([
+            'Post ID: ', str(self.id), '\r\n',
+            'User: ', self.first_name,'\r\n', ' ', self.last_name,
+            'Title: ', self.title, '\r\n',
+            'Content: ', self.content, '\r\n'
+            'Photo: ', self.photo_link, '\r\n',
+            'Theme: ', self.theme_posts, '\r\n',
+            'Continent: ', self.continent_posts
+        ])
+
+
+
+
+
+
+
+
+
+
+
 class Continent(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     continent=db.Column(db.String(50), nullable=False)
@@ -27,7 +128,7 @@ class Posts(db.Model):
 
     def __repr__(self):
         return ''.join([
-            'User: ',  self.user_id.first_name, self.user_id.last_name,'\r\n',
+            'User: ', self.first_name,'\r\n', ' ', self.last_name,
             'Title: ', self.title, '\r\n', 
             'Content: ', self.content, '\r\n'
             'Continent: ', self.continent_id
@@ -57,7 +158,7 @@ class Users(db.Model, UserMixin):
 
 
 
-'''
+
 
 
 class Theme(db.Model):
