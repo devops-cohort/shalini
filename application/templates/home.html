@@ -8,6 +8,7 @@
 			<p> -- {{ post.content }}</p>
 			<p> -- {{ post.photo.photo_link }} </p>
 			<p> -- {{ post.users.first_name }} {{ post.users.last_name }} </p>
+                        <p> -- {{ post.continent.continent }} </p>
 		</div>
 	{% endfor %}
 {% endblock body_content %}

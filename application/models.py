@@ -21,41 +21,57 @@ class Posts(db.Model):
     content = db.Column(db.String(500), nullable=False, unique=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     photo_id = db.Column(db.Integer, db.ForeignKey('photo.id'), nullable=False) 
-#    photo_theme = db.Column(db.Integer, db.ForeignKey('photo_theme.id'), nullable=False) 
-#    photo_continent = db.Column(db.Integer, db.ForeignKey('photo_continent.id'), nullable=False)
-
+    photo_theme = db.Column(db.Integer, db.ForeignKey('theme.themeID'), nullable=False) 
+    continent_id = db.Column(db.Integer, db.ForeignKey('continent.id'), nullable=False)
 
     def __repr__(self):
         return ''.join([
             'Post ID: ', str(self.id), '\r\n', 
             'Title: ', self.title, '\r\n',
-            'Content: ', self.content, '\r\n'
+            'Content: ', self.content
+        ])
+
+photo_labels= db.Table('photo_type', db.Model.metadata,
+        db.Column('typeID', db.Integer, db.ForeignKey('photo_type.id')),
+        db.Column('themeID', db.Integer, db.ForeignKey('theme.id'))
+        )
+
+
+class Photo_Type(db.Model):
+    typeID = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    type = db.Column(db.String(100), nullable=False)
+    
+
+    def __repr__(self):
+        return ''.join([
+            'Type ID: ', str(self.id),'\r\n',
+            'Photo Type: ', self.type
         ])
 
 
-
-class Photo_Theme(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+class Theme(db.Model):
+    themeID = db.Column(db.Integer, primary_key=True, autoincrement = True)
     theme = db.Column(db.String(100), nullable=False)
-#    theme_posts = db.relationship=('Posts')
+    photo_labels = db.relationship('Posts', secondary = photo_labels, backref = 'theme', lazy=True)
+
 
     def __repr__(self):
         return ''.join([
             'Theme ID: ', str(self.id),'\r\n',
-            'Photo Theme ', self.photo_link
+            'Photo Theme ', self.theme
         ])
 
 
-class Photo_Continent(db.Model):
+class Continent(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    Continent = db.Column(db.String(100), nullable=False)
-#    continent_posts = db.relationship=('Posts')
+    continent = db.Column(db.String(100), nullable=False)
+    continent_posts = db.relationship('Posts', backref = 'continent', lazy=True)
 
 
     def __repr__(self):
         return ''.join([
             'Country ID: ', str(self.id),'\r\n',
-            'Photo Continent ', self.photo_link
+            'Continent ', self.continent
         ])
 
 

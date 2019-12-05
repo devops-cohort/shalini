@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, request
 from application import app, db
-from application.models import Photo, Photo_Theme, Photo_Continent, Users, Posts
+from application.models import Photo, Theme, Continent, Users, Posts, Photo_Type
 from application.forms import PostForm, RegistrationForm, LoginForm
 from application import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
