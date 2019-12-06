@@ -4,10 +4,19 @@ from datetime import datetime
 
 
 
+photo_labels= db.Table('photo_type', db.Model.metadata,
+    db.Column('photoID', db.Integer, db.ForeignKey('photo.photoID')),
+    db.Column('themeID', db.Integer, db.ForeignKey('theme.themeID'))
+        )
+
+
+
+
 class Photo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    photoID = db.Column(db.Integer, primary_key=True)
     photo_link = db.Column(db.String(300), nullable = False)
     photo_posts = db.relationship('Posts', backref = 'photo', lazy=True)
+#    description = db.relationship('Theme', secondary = photo_labels, backref = db.backref('photo_theme'), lazy='dynamic')
 
     def __repr__(self):
         return ''.join([
@@ -20,8 +29,7 @@ class Posts(db.Model):
     title = db.Column(db.String(100), nullable=False, unique=True)
     content = db.Column(db.String(500), nullable=False, unique=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    photo_id = db.Column(db.Integer, db.ForeignKey('photo.id'), nullable=False) 
-    photo_theme = db.Column(db.Integer, db.ForeignKey('theme.themeID'), nullable=False)
+    photo_id = db.Column(db.Integer, db.ForeignKey('photo.photoID'), nullable=False) 
     continent_id = db.Column(db.Integer, db.ForeignKey('continent.id'), nullable=False)
 
     def __repr__(self):
@@ -31,9 +39,10 @@ class Posts(db.Model):
             'Content: ', self.content
         ])
 
-photo_labels= db.Table('photo_type',
-        db.Column('typeID', db.Integer, db.ForeignKey('photo_type.typeID')),
-        db.Column('themeID', db.Integer, db.ForeignKey('theme.themeID'))
+'''
+photo_labels= db.Table('photo_type', db.Model.metadata,
+    db.Column('photoID', db.Integer, db.ForeignKey('photo.photoID')),
+    db.Column('themeID', db.Integer, db.ForeignKey('theme.themeID'))
         )
 
 
@@ -47,13 +56,12 @@ class Photo_Type(db.Model):
             'Type ID: ', str(self.id),'\r\n',
             'Photo Type: ', self.type
         ])
-
+'''
 
 class Theme(db.Model):
     themeID = db.Column(db.Integer, primary_key=True, autoincrement = True)
     theme = db.Column(db.String(100), nullable=False)
-    photo_theme=db.relationship('Posts', backref = 'author', lazy = True)
-    photo_labels = db.relationship('Posts', secondary = photo_labels, backref = db.backref('themes', lazy='dynamic'))
+  
 
 
     def __repr__(self):

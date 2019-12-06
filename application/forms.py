@@ -35,12 +35,12 @@ class PostForm(FlaskForm):
     )
 
 
-    photo_id = StringField('Photo',
-        validators=[
-            DataRequired()
-        ]
-    )
 
+
+
+
+
+    
     submit = SubmitField('Post Content')
 
 
