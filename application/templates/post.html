@@ -1,4 +1,3 @@
-  
 {% extends "layout.html" %}
 {% block body_content%}
 
@@ -31,13 +30,41 @@
 			{% else %}
 				{{ form.content }}
 			{% endif %}
-			</div>
-			<br>
 
 			<div class="form-group">
-				{{ form.submit }}
-			</div>
-		</form>
-	</div>
+                                {{ form.photo_link.label }}
+                                {% if form.photo_link.errors %}
+                                {{ form.photo_link }}
+                                <div class="error">
+                                        {% for error in form.photo_link.errors %}
+                                                <span>{{ error }}</span>
+                                        {% endfor %}
+                                </div>
+                        {% else %}
+                                {{ form.photo_link }}
+                        {% endif %}
+                        <div class="form-group">
+                                {{ form.continent.label }}
+                                {% if form.continent.errors %}
+                                {{ form.continent.continent }}
+                                <div class="error">
+                                        {% for error in form.continent.errors %}
+                                                <span>{{ error }}</span>
+                                        {% endfor %}
+                                </div>
+                        {% else %}
+                                {{ form.continent }}
+                        {% endif %}
 
-{% endblock body_content %} 
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                                {{ form.submit }}
+                        </div>
+                </form>
+        </div>
+
+{% endblock body_content %}
+
+

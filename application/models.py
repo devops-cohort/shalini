@@ -4,59 +4,30 @@ from datetime import datetime
 
 
 
-photo_labels= db.Table('photo_type', db.Model.metadata,
-    db.Column('photoID', db.Integer, db.ForeignKey('photo.photoID')),
-    db.Column('themeID', db.Integer, db.ForeignKey('theme.themeID'))
-        )
-
-
-
-
-class Photo(db.Model):
-    photoID = db.Column(db.Integer, primary_key=True)
-    photo_link = db.Column(db.String(300), nullable = False)
-    photo_posts = db.relationship('Posts', backref = 'photo', lazy=True)
-#    description = db.relationship('Theme', secondary = photo_labels, backref = db.backref('photo_theme'), lazy='dynamic')
-
-    def __repr__(self):
-        return ''.join([
-            'Photo ID: ', str(self.id),'\r\n',
-            'Photo Link ', self.photo_link
-        ])
+#photo_labels= db.Table('photo_type', db.Model.metadata,
+#    db.Column('postsID', db.Integer, db.ForeignKey('posts.postsID')),
+#    db.Column('themeID', db.Integer, db.ForeignKey('theme.themeID'))
+#        )
 
 class Posts(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False, unique=True)
-    content = db.Column(db.String(500), nullable=False, unique=True)
+    postsID = db.Column(db.Integer, primary_key=True, autoincrement = True )
+    photo_link = db.Column(db.String(300), nullable = False)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.String(500), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    photo_id = db.Column(db.Integer, db.ForeignKey('photo.photoID'), nullable=False) 
-    continent_id = db.Column(db.Integer, db.ForeignKey('continent.id'), nullable=False)
+    continent = db.Column(db.String(100), nullable=False)
+#    continent_id = db.Column(db.Integer, db.ForeignKey('continent.id'), nullable=False)
+#    description = db.relationship('Theme', secondary = photo_labels, backref = db.backref('photo_theme'), lazy='dynamic')
+
 
     def __repr__(self):
         return ''.join([
-            'Post ID: ', str(self.id), '\r\n', 
+            'Photo ID: ', str(self.photoID),'\r\n',
+            'Photo Link ', self.photo_link, '\r\n',
             'Title: ', self.title, '\r\n',
             'Content: ', self.content
         ])
 
-'''
-photo_labels= db.Table('photo_type', db.Model.metadata,
-    db.Column('photoID', db.Integer, db.ForeignKey('photo.photoID')),
-    db.Column('themeID', db.Integer, db.ForeignKey('theme.themeID'))
-        )
-
-
-class Photo_Type(db.Model):
-    typeID = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    type = db.Column(db.String(100), nullable=False)
-    
-
-    def __repr__(self):
-        return ''.join([
-            'Type ID: ', str(self.id),'\r\n',
-            'Photo Type: ', self.type
-        ])
-'''
 
 class Theme(db.Model):
     themeID = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -70,7 +41,7 @@ class Theme(db.Model):
             'Photo Theme ', self.theme
         ])
 
-
+'''
 class Continent(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     continent = db.Column(db.String(100), nullable=False)
@@ -82,7 +53,7 @@ class Continent(db.Model):
             'Country ID: ', str(self.id),'\r\n',
             'Continent ', self.continent
         ])
-
+'''
 
 
 class Users(db.Model, UserMixin):
@@ -91,7 +62,7 @@ class Users(db.Model, UserMixin):
     password = db.Column(db.String(100), nullable=False)
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(30), nullable=False)
-    users_posts = db.relationship('Posts', backref = 'users', lazy=True)
+    posts = db.relationship('Posts', cascade = 'delete', backref = 'author', lazy=True)
 
 
     @login_manager.user_loader

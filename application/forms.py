@@ -35,9 +35,20 @@ class PostForm(FlaskForm):
     )
 
 
+    continent = StringField('Continent',
+        validators=[
+            DataRequired(),
+            Length(min=4, max=20)
+        ]
+    )
 
-
-
+    
+    photo_link = StringField('Photo Link',
+        validators=[
+            DataRequired(),
+            Length(min=4, max=500)
+        ]
+    )
 
 
     
@@ -47,6 +58,22 @@ class PostForm(FlaskForm):
 
 
 class RegistrationForm(FlaskForm):
+
+    first_name = StringField('First Name', 
+        validators=[
+            DataRequired(),
+            Length(min=4, max =30)
+        ]
+    )
+
+    last_name = StringField('Last Name', 
+        validators=[
+            DataRequired(),
+            Length(min=4, max=30) 
+        ]
+    )
+
+
     email = StringField('Email',
         validators=[
             DataRequired(),
