@@ -21,7 +21,7 @@ class Posts(db.Model):
     content = db.Column(db.String(500), nullable=False, unique=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     photo_id = db.Column(db.Integer, db.ForeignKey('photo.id'), nullable=False) 
-    photo_theme = db.Column(db.Integer, db.ForeignKey('theme.themeID'), nullable=False) 
+    photo_theme = db.Column(db.Integer, db.ForeignKey('theme.themeID'), nullable=False)
     continent_id = db.Column(db.Integer, db.ForeignKey('continent.id'), nullable=False)
 
     def __repr__(self):
@@ -31,9 +31,9 @@ class Posts(db.Model):
             'Content: ', self.content
         ])
 
-photo_labels= db.Table('photo_type', db.Model.metadata,
-        db.Column('typeID', db.Integer, db.ForeignKey('photo_type.id')),
-        db.Column('themeID', db.Integer, db.ForeignKey('theme.id'))
+photo_labels= db.Table('photo_type',
+        db.Column('typeID', db.Integer, db.ForeignKey('photo_type.typeID')),
+        db.Column('themeID', db.Integer, db.ForeignKey('theme.themeID'))
         )
 
 
@@ -52,7 +52,8 @@ class Photo_Type(db.Model):
 class Theme(db.Model):
     themeID = db.Column(db.Integer, primary_key=True, autoincrement = True)
     theme = db.Column(db.String(100), nullable=False)
-    photo_labels = db.relationship('Posts', secondary = photo_labels, backref = 'theme', lazy=True)
+    photo_theme=db.relationship('Posts', backref = 'author', lazy = True)
+    photo_labels = db.relationship('Posts', secondary = photo_labels, backref = db.backref('themes', lazy='dynamic'))
 
 
     def __repr__(self):
