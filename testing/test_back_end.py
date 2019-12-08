@@ -30,8 +30,12 @@ class TestBase(TestCase):
         # create test admin user
         admin = Users(first_name="admin", last_name="admin", email="admin@admin.com", password="admin2016")
 
+        # create test non-admin user
+        employee = Users(first_name="test", last_name="user", email="test@user.com", password="test2016")
+
         # save users to database
         db.session.add(admin)
+        db.session.add(employee)
         db.session.commit()
 
 
@@ -49,8 +53,29 @@ class TestApplication(TestBase):
         '''
         testing the home page is accessible without login
         '''
-        reponse = self.client.get(url_for('home'))
+        response = self.client.get(url_for('home'))
         self.assertEqual(response.status_code, 200)
+
+
+    def test_user_view(self):
+        '''
+        Test that user page is inaccessible to without login and redirects to login page then to dashboard
+        '''
+
+        target_url = url_for('account', user_id=1)
+        redirect_url = url_for('login', next=target_url)
+        response = self.client.get(target_url)
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, redirect_url)
+
+
+    def test_account_view(self):
+        """Tests if login page is available when logged out"""
+        response = self.client.get(url_for('account'))
+        self.assertEqual(response.status_code, 302)
+
+
+
 
 
 
