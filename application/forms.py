@@ -148,28 +148,3 @@ class UpdateAccountForm(FlaskForm):
             if user:
                 raise ValidationError('Email already in use - Please choose another account')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

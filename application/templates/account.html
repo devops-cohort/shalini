@@ -1,9 +1,7 @@
-<h1>{{ current_user.first_name }} {{ current_user.last_name}} Account Page</h1>
-<h3>Update your account details.</h3>
 {% extends "layout.html" %}
 {% block body_content%}
-        <h1>Register page</h1>
-        <p>Need an account? Sign up!</p>
+<h3>{{ current_user.first_name }} {{ current_user.last_name}} Account Page</h3>
+<h4>Update your account details.</h4>
         <div class = "form">
                 <form method = "POST" action = "">
                         {{ form.hidden_tag() }}
