@@ -23,7 +23,9 @@ DELETE: Delete users account
 
 ## User Stories
 ***As a*** photographer 
+
 ***I want*** a website where I can share my photos 
+
 ***So that*** I can gain attraction for my work and get inspiration from the photography community
 
 ## Trello Board
