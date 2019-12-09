@@ -124,3 +124,12 @@ def delete_account():
     db.session.commit()
 
     return redirect(url_for('register'))
+
+
+@app.route('/coverage')
+def coverage_report():
+    return render_template('coveragereport.html', title = 'Coverage Report')
+
+
+
+
