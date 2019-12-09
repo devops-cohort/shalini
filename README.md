@@ -52,10 +52,15 @@ https://docs.google.com/document/d/1yJpHZXc18xZkpWp1crAIHZvsWIVXAcPJCufaC9ORrjw/
 
 # CI Pipeline
 Source Code; Python
+
 Version Control System; Git
+
 Project Tracking; Trello
+
 CI Server; Jenkins
+
 Testing Environment; Pytest (on GCP)
+
 As live Environment; GCP
 
 # Testing
