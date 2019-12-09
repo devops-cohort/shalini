@@ -128,7 +128,7 @@ def delete_account():
 
 @app.route('/coverage')
 def coverage_report():
-    return render_template('coveragereport.html', title = 'Coverage Report')
+    return render_template('index.html', title = 'Coverage Report')
 
 
 
