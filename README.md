@@ -33,7 +33,9 @@ https://trello.com/b/4V7C4Paj
 
 # Architecture 
 ## Database Structure
-The tables in grey were not implemented and the tables in white were implemented. The next stage would be to create a many to many reationship between a themes table anf the users allowing the user to filter out photo by themes. 
+The tables in grey were not implemented and the tables in white were implemented. The next stage would be to create a many to many reationship between a themes table anf the users allowing the user to filter out photo by themes.
+
+https://docs.google.com/document/d/1yJpHZXc18xZkpWp1crAIHZvsWIVXAcPJCufaC9ORrjw/edit?usp=sharing
 
 
 # CI Pipeline
