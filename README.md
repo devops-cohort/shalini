@@ -65,7 +65,7 @@ https://docs.google.com/document/d/1yJpHZXc18xZkpWp1crAIHZvsWIVXAcPJCufaC9ORrjw/
 Pytest was used for the unit testing. Overall the coverage was 41% and the coverage for the testing folder was 100%. All three unit tests were passed. 
 
 # Future Improvements 
-- Increase the complexity of the database to allow users to filter photos by continents and thems
+- Increase the complexity of the database to allow users to filter photos by continents and themes
 - Front-End web design 
 - Intergration testing using Selenium
 - Create an actual link for the photo by converting the string format of the URL input to a URL for the image which can be displayed in the Posts section. 
