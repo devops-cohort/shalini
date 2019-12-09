@@ -1,3 +1,13 @@
+https://docs.google.com/presentation/d/1RjkNUI4BVYoT0clRnXZObMbO2OmpbApUUo3wm4cVACA/edit#slide=id.g6c317da12d_1_1 presentation 
+
+http://34.89.6.5:8080  (jenkins)
+
+http://35.235.54.226:5000   (app)
+
+
+http://34.89.6.5:8080/coverage   (coverage report)
+
+
 **Table of Contents**
 
 * [The Brief](#the-brief)
