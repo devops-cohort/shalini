@@ -1,14 +1,14 @@
 **Table of Contents**
 
--[The Brief](#the-brief)
+* [The Brief](#the-brief)
 
--[User Stories](#user-stories)
+* [User Stories](#user-stories)
 
--[Architecture](#architecture)
+* [Architecture](#architecture)
 
--[CI Pipeline](#CI-Pipeline)
+* [CI Pipeline](#CI-Pipeline)
 
--[Future Improvements](#Future-Improvements)
+* [Future Improvements](#Future-Improvements)
 
 
 # The Brief
