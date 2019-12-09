@@ -34,7 +34,7 @@ https://trello.com/b/4V7C4Paj
 # Architecture 
 ## Database Structure
 The tables in grey were not implemented and the tables in white were implemented. The next stage would be to create a many to many reationship between a themes table anf the users allowing the user to filter out photo by themes. 
-![ERD](https://www.lucidchart.com/documents/view/f6f6954e-c6a6-4434-9025-5125b7afa75c "ERD")
+
 
 # CI Pipeline
 Source Code; Python
@@ -43,7 +43,9 @@ Project Tracking; Trello
 CI Server; Jenkins
 Testing Environment; Pytest (on GCP)
 As live Environment; GCP
-#Testing
+
+# Testing
+
 https://docs.google.com/document/d/1yJpHZXc18xZkpWp1crAIHZvsWIVXAcPJCufaC9ORrjw/edit?usp=sharing
 
 Pytest was used for the unit testing. Overall the coverage was 41% and the coverage for the testing folder was 100%. All three unit tests were passed. 
@@ -52,4 +54,5 @@ Pytest was used for the unit testing. Overall the coverage was 41% and the cover
 - Increase the complexity of the database to allow users to filter photos by continents and thems
 - Front-End web design 
 - Intergration testing using Selenium
-- Create an actual link for the photo by converting the string format of the URL input to a URL for the image which can be displayed in the Posts section. # FundamentalProject
+- Create an actual link for the photo by converting the string format of the URL input to a URL for the image which can be displayed in the Posts section. 
+
