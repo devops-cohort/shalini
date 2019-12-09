@@ -1,7 +1,9 @@
 **Table of Contents**
 [The Brief](#the-brief)
-
-
+[User Stories](#user-stories)
+[Architecture](#architecture)
+[CI Pipeline](#CI-Pipeline)
+[Future Improvements](#Future-Improvements)
 
 
 # The Brief
