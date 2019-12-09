@@ -1,5 +1,5 @@
 **Table of Contents**
-[The Brief](#brief)
+[The Brief](#the-brief)
 
 
 
