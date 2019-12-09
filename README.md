@@ -49,7 +49,6 @@ The tables in grey were not implemented and the tables in white were implemented
 
 https://docs.google.com/document/d/1yJpHZXc18xZkpWp1crAIHZvsWIVXAcPJCufaC9ORrjw/edit?usp=sharing
 
-
 # CI Pipeline
 Source Code; Python
 
@@ -62,6 +61,16 @@ CI Server; Jenkins
 Testing Environment; Pytest (on GCP)
 
 As live Environment; GCP
+
+# Risk Assessment
+
+
+
+
+
+
+
+
 
 # Testing
 
