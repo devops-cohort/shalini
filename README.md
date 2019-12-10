@@ -27,8 +27,11 @@ http://34.89.6.5:5000/coverage  (coverage report)
 To demonstrate this I will be creating a photography blog page where users can create an account and post thier photos.
 
 CREATE: Create a post, create and account
+
 READ: Read the post displayed on the home.html page
+
 UPDATE: Update users account
+
 DELETE: Delete users account 
 
 ## User Stories
