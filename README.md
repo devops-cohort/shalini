@@ -61,7 +61,7 @@ https://trello.com/b/4V7C4Paj
 ## Database Structure
 The tables in grey were not implemented and the tables in white were implemented. The next stage would be to create a many to many reationship between a themes table anf the users allowing the user to filter out photo by themes.
 
-<img align="right" width="100" height="100" src=https://imgur.com/a/AslgLwL>
+<img align="right" width="100" height="100" src=https://imgur.com/gallery/AslgLwL>
 
 
 
