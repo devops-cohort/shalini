@@ -24,7 +24,7 @@ http://34.89.6.5:5000/coverage  (coverage report)
 # The Brief
 The purpose of this project was "to create a CRUD application with utilisation of supporting tools, methodologies and technologies" as part of my training at the QA academy to become a devops engineer. I have demonstrated my understanding of the devops techonologies I have learnt about 5 weeks into the training through creating a photography blog. Here users will be able to create an account and use this to post photos. 
 
-In order to met the basic CRUD fuctionality by; 
+I have met the basic CRUD fuctionality by; 
 
 CREATE: Create a post, create and account
 
@@ -34,7 +34,7 @@ UPDATE: Update users account
 
 DELETE: Delete users account
 
-At the moment, the blog fully encapuslets the devops tools I have learnt about, such as Jenkins, gunicorn and GCP, however due to time constraints it only covers the basic functionalities. Since submitting the project, I am going to increase the complexity of the application ot further demonstrate my capabilites as a devops engineer. 
+At the moment, the blog fully encapuslets the devops tools I have learnt about, such as Jenkins, gunicorn and GCP, however due to time constraints it only covers the basic functionalities. Since submitting the project, I am going to increase the complexity of the application to further demonstrate my capabilites as a devops engineer. 
 
 ## User Stories
 
@@ -46,6 +46,12 @@ For this project, I have decided to make the application for my friend who is a 
 
 ***So that*** I can gain attraction for my work and get inspiration from the photography community
 
+
+
+
+
+
+
 ## Trello Board
 
 https://trello.com/b/4V7C4Paj
@@ -54,6 +60,12 @@ https://trello.com/b/4V7C4Paj
 # Architecture 
 ## Database Structure
 The tables in grey were not implemented and the tables in white were implemented. The next stage would be to create a many to many reationship between a themes table anf the users allowing the user to filter out photo by themes.
+
+<img align="right" width="100" height="100" src=https://imgur.com/a/AslgLwL>
+
+
+
+
 
 https://docs.google.com/document/d/1yJpHZXc18xZkpWp1crAIHZvsWIVXAcPJCufaC9ORrjw/edit?usp=sharing
 
