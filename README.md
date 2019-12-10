@@ -34,11 +34,15 @@ UPDATE: Update users account
 
 DELETE: Delete users account
 
-At the moment, the blog fully encapuslets the devops tools I have learnt about, such as Jenkins, gunicorn and GCP, however due to time constraints it only covers the basic functionalities. Since submitting the project, I am going to increase the complexity of the application to further demonstrate my capabilites as a devops engineer. 
+At the moment, the blog fully encapsulates the devops tools I have learnt about, such as Jenkins, gunicorn and GCP.However due to time constraints it only covers the basic functionalities. Since submitting the project, I am going to increase the complexity of the application to further demonstrate my capabilites as a devops engineer. 
 
 ## User Stories
 
-For this project, I have decided to make the application for my friend who is a photographer; this is to help me practice working in a real-life client scenario. In my meetings with my client, he explained to me about how he wanted a way to display his photos as a way to gain work as a professional photographer. 
+For this project, I have decided to make the application for my friend who is a photographer; this is to help me practice working in a real-life client scenario. In my meetings with my client, he explained to me about how he wanted a way to display his photos as a way to gain work as a professional photographer as shown in the photo below;
+
+<p align="center"> 
+ <img width="460" height="300"height="100" src=[Imgur](https://i.imgur.com/6P4WxuW.jpg)>
+</p>
  
 ***As a*** photographer 
 
@@ -61,7 +65,7 @@ https://trello.com/b/4V7C4Paj
 ## Database Structure
 The tables in grey were not implemented and the tables in white were implemented. The next stage would be to create a many to many reationship between a themes table anf the users allowing the user to filter out photo by themes.
 
-<img align="right" width="100" height="100" src=[Imgur](https://i.imgur.com/6P4WxuW.jpg)>
+
 
 
 
