@@ -44,16 +44,12 @@ For this project, I have decided to make the application for my friend who is a 
  <img width="460" height="300"height="100" src=[Imgur](https://i.imgur.com/6P4WxuW.jpg)>
 </p>
  
+ Therefore, the user story is; 
 ***As a*** photographer 
 
 ***I want*** a website where I can share my photos 
 
 ***So that*** I can gain attraction for my work and get inspiration from the photography community
-
-
-
-
-
 
 
 ## Trello Board
