@@ -40,7 +40,7 @@ At the moment, the blog fully encapsulates the devops tools I have learnt about,
 
 For this project, I have decided to make the application for my friend who is a photographer; this is to help me practice working in a real-life client scenario. In my meetings with my client, he explained to me about how he wanted a way to display his photos as a way to gain work as a professional photographer as shown in the photo below;
 
-[Imgur](https://i.imgur.com/6P4WxuW.jpg)>
+[Imgur](https://i.imgur.com/6P4WxuW.jpg)
 
  
  Therefore, the user story is;
