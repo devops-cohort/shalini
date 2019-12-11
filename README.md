@@ -54,17 +54,14 @@ For this project, I have decided to make the application for my friend who is a 
 
 ## Trello Board
 
+I have used Trello as a project management tool to ensure I am sticking to my brief; below is the link to my current Trello board which outlines my current tasks that I am doing and future tasks that will need to be done in order to meet the project brief. 
+
 https://trello.com/b/4V7C4Paj
 
 
 # Architecture 
 ## Database Structure
-The tables in grey were not implemented and the tables in white were implemented. The next stage would be to create a many to many reationship between a themes table anf the users allowing the user to filter out photo by themes.
-
-
-
-
-
+The tables in grey were not implemented and the tables in white were implemented. The next stage would be to create a many to many reationship between a themes table and the users allowing the user to filter out photos by themes.
 
 
 https://docs.google.com/document/d/1yJpHZXc18xZkpWp1crAIHZvsWIVXAcPJCufaC9ORrjw/edit?usp=sharing
@@ -82,21 +79,11 @@ Testing Environment; Pytest (on GCP)
 
 As live Environment; GCP
 
-# Risk Assessment
-
-
-
-
-
-
-
-
-
 # Testing
 
 https://docs.google.com/document/d/1yJpHZXc18xZkpWp1crAIHZvsWIVXAcPJCufaC9ORrjw/edit?usp=sharing
 
-Pytest was used for the unit testing. Overall the coverage was 41% and the coverage for the testing folder was 100%. All three unit tests were passed. 
+Pytest was used for the unit testing. Overall the coverage was 59% and the coverage and all three unit tests were passed. 
 
 # Future Improvements 
 - Increase the complexity of the database to allow users to filter photos by continents and themes
