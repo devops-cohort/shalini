@@ -4,9 +4,14 @@ services:
       image: nginx:latest
       ports:
         - target: 80
+          published: 80
           protocol: tcp
       depends_on:
-        - app 
+        - app
+      volumes:
+        - type: bind
+          source: ./nginx.conf
+          target: /etc/nginx/nginx.conf
 
     app:
       image: flask:latest
@@ -17,7 +22,7 @@ services:
           protocol: tcp
       environment: 
         - MY_SQL_USER=${MY_SQL_USER}
-        -  MY_SQL_PASSWORD=${MY_SQL_PASSWORD}
+        - MY_SQL_PASSWORD=${MY_SQL_PASSWORD}
         - MY_SQL_URL=${MY_SQL_URL}
         - MY_SQL_DB=${MY_SQL_DB}
         - SECRET_KEY=${SECRET_KEY}
