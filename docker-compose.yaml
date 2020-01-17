@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+    nginx:
+      image: nginx:latest
+      ports:
+        - target: 80
+          published: 80
+          protocol: tcp
+      depends_on:
+        - app
+      volumes:
+        - type: bind
+          source: ./nginx.conf
+          target: /etc/nginx/nginx.conf
+
+    app:
+      image: flask:latest
+      build: 
+        context: .
+      ports:
+        - target: 5000
+          protocol: tcp
+      environment: 
+        - MY_SQL_USER=${MY_SQL_USER}
+        - MY_SQL_PASSWORD=${MY_SQL_PASSWORD}
+        - MY_SQL_URL=${MY_SQL_URL}
+        - MY_SQL_DB=${MY_SQL_DB}
+        - SECRET_KEY=${SECRET_KEY}
+        - MY_SQL_DB_TEST=${MY_SQL_DB_TEST} 
+

@@ -1,22 +1,9 @@
 from flask import render_template, redirect, url_for, request
 from application import app, db
-from application.models import Posts, Users
-from application.forms import PostForm, RegistrationForm, LoginForm
+from application.models import *
+from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccountForm
 from application import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
-
-dummyData = [
-        {
-            "name": {"first":"Chester", "last":"Gardner"},
-            "title":"First Post",
-            "content":"This is some dummy data for Flask lectures"
-        },
-        {
-            "name": {"first":"Chris", "last":"Perrins"},
-            "title":"Second Post",
-            "content":"This is even more dummy data for Flask lectures"
-        }
-]
 
 
 @app.route('/')
@@ -48,19 +35,27 @@ def login():
             if next_page:
                 return redirect(next_page)
             else:
-                return redirect(url_for('home'))
+                return redirect(url_for('post'))
     return render_template('login.html', title = 'Login', form=form)
 
 
 @app.route("/register", methods=['GET','POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = RegistrationForm()
+
+
     if form.validate_on_submit():
         hashed_pw = bcrypt.generate_password_hash(form.password.data)
-        user = Users(email=form.email.data, password=hashed_pw)
+        user = Users(
+            email=form.email.data,
+            password=hashed_pw, 
+            first_name = form.first_name.data, 
+            last_name = form.last_name.data)
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('login'))
+        return redirect(url_for('post'))
     return render_template('register.html', title = 'Register', form=form)
 
 
@@ -71,22 +66,70 @@ def post():
     form = PostForm()
     if form.validate_on_submit():
         postData = Posts(
-            first_name=form.first_name.data,
-            last_name=form.last_name.data,
             title=form.title.data,
-            content=form.content.data
-    )
+            content=form.content.data,
+            photo_link=form.photo_link.data,
+            continent=form.continent.data,
+            author=current_user
+        )
         db.session.add(postData)
         db.session.commit()
         return redirect(url_for('home'))
     else:
         print(form.errors)
         return render_template('post.html',title='Post', form=form)
-
+'''
+    author = CurrentUsers()
+    if author.validate_on_submit():
+        postData = Users(
+            first_name=author.first_name.data,
+            last_name=author.last_name.data,
+            email = author.email.data
+    )
+        db.session.add(postData)
+        db.session.commit()
+        return redirect(url_for('home'))
+    else:
+        print(form.errors)
+        return render_template('post.html',title='Post', author=author)
+'''
 
 @app.route("/logout")
 def logout():
     logout_user()
     return redirect(url_for('login'))
+
+@app.route('/account', methods=['GET', 'POST'])
+@login_required
+def account():
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        current_user.first_name = form.first_name.data
+        current_user.last_name = form.last_name.data
+        current_user.email = form.email.data
+        db.session.commit()
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.first_name.data = current_user.first_name
+        form.last_name.data = current_user.last_name
+        form.email.data = current_user.email
+    return render_template('account.html', title='Account', form=form)
+
+
+@app.route('/delete_account', methods=['GET','POST'])
+def delete_account():
+    user_id = current_user.id
+    user = Users.query.filter_by(id=user_id).first()
+    db.session.delete(user)
+    db.session.commit()
+
+    return redirect(url_for('register'))
+
+
+@app.route('/coverage')
+def coverage_report():
+    return render_template('index.html', title = 'Coverage Report')
+
+
 
 
